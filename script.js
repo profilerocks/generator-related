@@ -10,6 +10,8 @@ if (transformerPdf) {
   transformerPdf.name = "PDF (via Google Docs)";
 }
 
+defaultTransformers.sort((a, b) => a.name.localeCompare(b.name));
+
 const COOKIE_CONSENT_VERSION = "__Secure-cv";
 
 const COOKIE_CONSENT_PLATFORMS = "__Secure-cp";
@@ -335,6 +337,10 @@ async function acceptAllThirdParties() {
 function createEmbedIframe(attributes, platformKey) {
   const url = new URL(attributes.src);
 
+  if (url.hostname === "www.youtube.com") {
+    url.hostname = "www.youtube-nocookie.com";
+  }
+
   url.searchParams.set("dnt", "true");
   url.searchParams.set("frame", "false");
   url.searchParams.set("lang", "en");
@@ -343,6 +349,7 @@ function createEmbedIframe(attributes, platformKey) {
   const iframe = document.createElement("iframe");
 
   iframe.className = "embed " + platformKey;
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
   iframe.scrolling = "no";
   iframe.src = url.toString();
   iframe.setAttribute("allowtransparency", "true");
