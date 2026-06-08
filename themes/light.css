@@ -4,25 +4,24 @@
 @font-face {
   font-style: normal;
   font-weight: 100 900;
-  src: url("https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/inter-latin-wght-normal.woff2") format("woff2-variations");
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-ext-wght-normal.woff2) format("woff2-variations");
   font-family: "Inter Variable";
   font-display: swap;
   unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 /* jetbrains-mono-latin-wght-normal */
 @font-face {
   font-style: normal;
   font-weight: 100 800;
-  src: url("https://cdn.jsdelivr.net/fontsource/fonts/jetbrains-mono:vf@latest/jetbrains-mono-latin-wght-normal.woff2")
-    format("woff2-variations");
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/jetbrains-mono:vf@latest/latin-ext-wght-normal.woff2) format("woff2-variations");
   font-family: "JetBrains Mono Variable";
   font-display: swap;
   unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 [hidden] {
@@ -30,29 +29,29 @@
 }
 
 :root {
-  --color: #ddd;
-  --color-2: #c5c8c9;
-  --color-3: #a5a8a9;
-  --color-4: #707476;
-  --color-a: #00af9f;
-  --color-a-active: #07e3c3;
-  --color-a-hover: #03cfb0;
-  --color-bg: #000;
-  --color-bg-2: #0f1011;
-  --color-border: #303335;
-  --color-highlight: #1d8;
-  --color-input: #1a1c1c;
-  --color-input-active: #2f3333;
-  --color-input-hover: #272a2a;
-  --color-input-outline: #858889;
-  --color-valid: #0f8;
-  color-scheme: dark light;
+  --color: #000;
+  --color-2: #234;
+  --color-3: #456;
+  --color-4: #678;
+  --color-a: #00a080;
+  --color-a-active: #008060;
+  --color-a-hover: #009070;
+  --color-bg: #fff;
+  --color-bg-2: #eff0f1;
+  --color-border: #b0b3b5;
+  --color-highlight: #0a5;
+  --color-input: #e0e2e3;
+  --color-input-active: #c5c8c9;
+  --color-input-hover: #d0d3d4;
+  --color-input-outline: #a5a8a9;
+  color-scheme: light;
 }
 
 html {
   height: 100%;
   scrollbar-color: var(--color-4) transparent;
   scrollbar-gutter: stable both-edges;
+
   &:has(dialog[open]) {
     overflow: hidden;
   }
@@ -80,14 +79,22 @@ a {
   text-decoration-color: transparent;
   text-underline-offset: 0.375em;
   white-space: nowrap;
+
   &:hover {
     color: var(--color-a-hover);
     text-decoration-color: currentcolor;
     text-underline-offset: 0.125em;
   }
+
   &:active {
     color: var(--color-a-active);
   }
+}
+
+b,
+strong {
+  color: var(--color);
+  font-weight: 600;
 }
 
 blockquote {
@@ -119,6 +126,7 @@ dialog {
   background: var(--color-bg-2);
   padding: 0;
   width: 40em;
+
   &::backdrop {
     backdrop-filter: blur(10px);
   }
@@ -131,7 +139,7 @@ h4,
 h5,
 h6 {
   color: var(--color);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.375;
 }
 
@@ -166,10 +174,12 @@ ul {
   gap: 0.5em;
   padding-inline-start: 1.25em;
   color: var(--color-3);
-  > li {
+
+  >li {
     &::marker {
       color: var(--color-highlight);
     }
+
     ol,
     ul {
       margin-block-start: 0.5em;
@@ -191,11 +201,6 @@ pre {
   scrollbar-color: var(--color-4) transparent;
   scrollbar-gutter: stable;
   font-size: 1rem;
-}
-
-strong {
-  color: var(--color);
-  font-weight: 500;
 }
 
 table {
@@ -240,17 +245,21 @@ th {
   font-weight: 500;
   user-select: none;
   text-decoration: none;
+
   &:hover {
     background: var(--color-input-hover);
     color: var(--color-2);
   }
+
   &:is(:active, :focus-visible) {
     background: var(--color-input-active);
     color: var(--color);
   }
+
   &:focus-visible {
     outline-color: var(--color-input-outline);
   }
+
   &::before,
   &::after {
     mask-size: contain;
@@ -258,36 +267,44 @@ th {
     background-color: currentcolor;
     content: "";
   }
+
   &::before {
     mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PGcgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNNi4zNTQgNS41SDRhMyAzIDAgMCAwIDAgNmgzYTMgMyAwIDAgMCAyLjgzLTRIOXEtLjEzIDAtLjI1LjAzMUEyIDIgMCAwIDEgNyAxMC41SDRhMiAyIDAgMSAxIDAtNGgxLjUzNWMuMjE4LS4zNzYuNDk1LS43MTQuODItMXoiLz48cGF0aCBkPSJNOSA1LjVhMyAzIDAgMCAwLTIuODMgNGgxLjA5OEEyIDIgMCAwIDEgOSA2LjVoM2EyIDIgMCAxIDEgMCA0aC0xLjUzNWE0IDQgMCAwIDEtLjgyIDFIMTJhMyAzIDAgMSAwIDAtNnoiLz48L2c+PC9zdmc+");
     min-width: 1.5em;
     min-height: 1.5em;
   }
+
   &::after {
     mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PGcgZmlsbD0iY3VycmVudENvbG9yIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik04LjYzNiAzLjVhLjUuNSAwIDAgMC0uNS0uNUgxLjVBMS41IDEuNSAwIDAgMCAwIDQuNXYxMEExLjUgMS41IDAgMCAwIDEuNSAxNmgxMGExLjUgMS41IDAgMCAwIDEuNS0xLjVWNy44NjRhLjUuNSAwIDAgMC0xIDBWMTQuNWEuNS41IDAgMCAxLS41LjVoLTEwYS41LjUgMCAwIDEtLjUtLjV2LTEwYS41LjUgMCAwIDEgLjUtLjVoNi42MzZhLjUuNSAwIDAgMCAuNS0uNSIvPjxwYXRoIGQ9Ik0xNiAuNWEuNS41IDAgMCAwLS41LS41aC01YS41LjUgMCAwIDAgMCAxaDMuNzkzTDYuMTQ2IDkuMTQ2YS41LjUgMCAxIDAgLjcwOC43MDhMMTUgMS43MDdWNS41YS41LjUgMCAwIDAgMSAweiIvPjwvZz48L3N2Zz4=");
     margin-inline-start: auto;
     min-width: 1em;
     min-height: 1em;
   }
+
   &[href^="mailto:"]::before {
     mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNLjA1IDMuNTU1QTIgMiAwIDAgMSAyIDJoMTJhMiAyIDAgMCAxIDEuOTUgMS41NTVMOCA4LjQxNHpNMCA0LjY5N3Y3LjEwNGw1LjgwMy0zLjU1OHpNNi43NjEgOC44M2wtNi41NyA0LjAyN0EyIDIgMCAwIDAgMiAxNGgxMmEyIDIgMCAwIDAgMS44MDgtMS4xNDRsLTYuNTctNC4wMjdMOCA5LjU4NnptMy40MzYtLjU4NkwxNiAxMS44MDFWNC42OTd6Ii8+PC9zdmc+");
   }
+
   &[href^="tel:"]::before {
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentcolor%22%20d%3D%22M3.654%201.328a.678.678%200%200%200-1.015-.063L1.605%202.3c-.483.484-.661%201.169-.45%201.77a17.6%2017.6%200%200%200%204.168%206.608a17.6%2017.6%200%200%200%206.608%204.168c.601.211%201.286.033%201.77-.45l1.034-1.034a.678.678%200%200%200-.063-1.015l-2.307-1.794a.68.68%200%200%200-.58-.122l-2.19.547a1.75%201.75%200%200%201-1.657-.459L5.482%208.062a1.75%201.75%200%200%201-.46-1.657l.548-2.19a.68.68%200%200%200-.122-.58zM1.884.511a1.745%201.745%200%200%201%202.612.163L6.29%202.98c.329.423.445.974.315%201.494l-.547%202.19a.68.68%200%200%200%20.178.643l2.457%202.457a.68.68%200%200%200%20.644.178l2.189-.547a1.75%201.75%200%200%201%201.494.315l2.306%201.794c.829.645.905%201.87.163%202.611l-1.034%201.034c-.74.74-1.846%201.065-2.877.702a18.6%2018.6%200%200%201-7.01-4.42a18.6%2018.6%200%200%201-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z%22%2F%3E%3C%2Fsvg%3E");
   }
+
   &[href^="https://apps.apple.com/"]::before {
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cpath%20id%3D%22SVG67go7b2R%22%20d%3D%22M11.182.008C11.148-.03%209.923.023%208.857%201.18c-1.066%201.156-.902%202.482-.878%202.516s1.52.087%202.475-1.258s.762-2.391.728-2.43m3.314%2011.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789%201.698-2.854s-.597-.79-1.254-1.157a3.7%203.7%200%200%200-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074%202.237c-.652%201.482-.311%203.83-.067%204.56s.625%201.924%201.273%202.796c.576.984%201.34%201.667%201.659%201.899s1.219.386%201.843.067c.502-.308%201.408-.485%201.766-.472c.357.013%201.061.154%201.782.539c.571.197%201.111.115%201.652-.105c.541-.221%201.324-1.059%202.238-2.758q.52-1.185.473-1.282%22%2F%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22currentColor%22%3E%3Cuse%20href%3D%22%23SVG67go7b2R%22%2F%3E%3Cuse%20href%3D%22%23SVG67go7b2R%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   }
+
   &[href^="https://bsky.app/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentcolor%22%20d%3D%22M3.468%201.948C5.303%203.325%207.276%206.118%208%207.616c.725-1.498%202.698-4.29%204.532-5.668C13.855.955%2016%20.186%2016%202.632c0%20.489-.28%204.105-.444%204.692c-.572%202.04-2.653%202.561-4.504%202.246c3.236.551%204.06%202.375%202.281%204.2c-3.376%203.464-4.852-.87-5.23-1.98c-.07-.204-.103-.3-.103-.218c0-.081-.033.014-.102.218c-.379%201.11-1.855%205.444-5.231%201.98c-1.778-1.825-.955-3.65%202.28-4.2c-1.85.315-3.932-.205-4.503-2.246C.28%206.737%200%203.12%200%202.632C0%20.186%202.145.955%203.468%201.948%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://discord.gg/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M13.545%202.907a13.2%2013.2%200%200%200-3.257-1.011a.05.05%200%200%200-.052.025c-.141.25-.297.577-.406.833a12.2%2012.2%200%200%200-3.658%200a8%208%200%200%200-.412-.833a.05.05%200%200%200-.052-.025c-1.125.194-2.22.534-3.257%201.011a.04.04%200%200%200-.021.018C.356%206.024-.213%209.047.066%2012.032q.003.022.021.037a13.3%2013.3%200%200%200%203.995%202.02a.05.05%200%200%200%20.056-.019q.463-.63.818-1.329a.05.05%200%200%200-.01-.059l-.018-.011a9%209%200%200%201-1.248-.595a.05.05%200%200%201-.02-.066l.015-.019q.127-.095.248-.195a.05.05%200%200%201%20.051-.007c2.619%201.196%205.454%201.196%208.041%200a.05.05%200%200%201%20.053.007q.121.1.248.195a.05.05%200%200%201-.004.085a8%208%200%200%201-1.249.594a.05.05%200%200%200-.03.03a.05.05%200%200%200%20.003.041c.24.465.515.909.817%201.329a.05.05%200%200%200%20.056.019a13.2%2013.2%200%200%200%204.001-2.02a.05.05%200%200%200%20.021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03%200%200%200-.02-.019m-8.198%207.307c-.789%200-1.438-.724-1.438-1.612s.637-1.613%201.438-1.613c.807%200%201.45.73%201.438%201.613c0%20.888-.637%201.612-1.438%201.612m5.316%200c-.788%200-1.438-.724-1.438-1.612s.637-1.613%201.438-1.613c.807%200%201.451.73%201.438%201.613c0%20.888-.631%201.612-1.438%201.612%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://facebook.com/"],
   &[href^="https://fb.com/"],
   &[href^="https://www.facebook.com/"],
@@ -307,18 +324,21 @@ th {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentcolor%22%20d%3D%22M8.051%201.999h.089c.822.003%204.987.033%206.11.335a2.01%202.01%200%200%201%201.415%201.42c.101.38.172.883.22%201.402l.01.104l.022.26l.008.104c.065.914.073%201.77.074%201.957v.075c-.001.194-.01%201.108-.082%202.06l-.008.105l-.009.104c-.05.572-.124%201.14-.235%201.558a2.01%202.01%200%200%201-1.415%201.42c-1.16.312-5.569.334-6.18.335h-.142c-.309%200-1.587-.006-2.927-.052l-.17-.006l-.087-.004l-.171-.007l-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01%202.01%200%200%201-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09%209.82l-.008-.104A31%2031%200%200%201%200%207.68v-.123c.002-.215.01-.958.064-1.778l.007-.103l.003-.052l.008-.104l.022-.26l.01-.104c.048-.519.119-1.023.22-1.402a2.01%202.01%200%200%201%201.415-1.42c.487-.13%201.544-.21%202.654-.26l.17-.007l.172-.006l.086-.003l.171-.007A100%20100%200%200%201%207.858%202zM6.4%205.209v4.818l4.157-2.408z%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://github.com/"],
   &[href^="https://www.github.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentcolor%22%20d%3D%22M8%200C3.58%200%200%203.58%200%208c0%203.54%202.29%206.53%205.47%207.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01%201.08.58%201.23.82c.72%201.21%201.87.87%202.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0%200%20.67-.21%202.2.82c.64-.18%201.32-.27%202-.27s1.36.09%202%20.27c1.53-1.04%202.2-.82%202.2-.82c.44%201.1.16%201.92.08%202.12c.51.56.82%201.27.82%202.15c0%203.07-1.87%203.75-3.65%203.95c.29.25.54.73.54%201.48c0%201.07-.01%201.93-.01%202.2c0%20.21.15.46.55.38A8.01%208.01%200%200%200%2016%208c0-4.42-3.58-8-8-8%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://gitlab.com/"],
   &[href^="https://www.gitlab.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentcolor%22%20d%3D%22m15.734%206.1l-.022-.058L13.534.358a.57.57%200%200%200-.563-.356a.6.6%200%200%200-.328.122a.6.6%200%200%200-.193.294l-1.47%204.499H5.025l-1.47-4.5A.572.572%200%200%200%202.47.358L.289%206.04l-.022.057A4.044%204.044%200%200%200%201.61%2010.77l.007.006l.02.014l3.318%202.485l1.64%201.242l1%20.755a.67.67%200%200%200%20.814%200l1-.755l1.64-1.242l3.338-2.5l.009-.007a4.05%204.05%200%200%200%201.34-4.668Z%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://instagram.com/"],
   &[href^="https://instagr.am/"],
   &[href^="https://ig.me/"],
@@ -328,6 +348,7 @@ th {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentcolor%22%20d%3D%22M8%200C5.829%200%205.556.01%204.703.048C3.85.088%203.269.222%202.76.42a3.9%203.9%200%200%200-1.417.923A3.9%203.9%200%200%200%20.42%202.76C.222%203.268.087%203.85.048%204.7C.01%205.555%200%205.827%200%208.001c0%202.172.01%202.444.048%203.297c.04.852.174%201.433.372%201.942c.205.526.478.972.923%201.417c.444.445.89.719%201.416.923c.51.198%201.09.333%201.942.372C5.555%2015.99%205.827%2016%208%2016s2.444-.01%203.298-.048c.851-.04%201.434-.174%201.943-.372a3.9%203.9%200%200%200%201.416-.923c.445-.445.718-.891.923-1.417c.197-.509.332-1.09.372-1.942C15.99%2010.445%2016%2010.173%2016%208s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9%203.9%200%200%200-.923-1.417A3.9%203.9%200%200%200%2013.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01%2010.172%200%207.998%200zm-.717%201.442h.718c2.136%200%202.389.007%203.232.046c.78.035%201.204.166%201.486.275c.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275%201.485c.039.843.047%201.096.047%203.231s-.008%202.389-.047%203.232c-.035.78-.166%201.203-.275%201.485a2.5%202.5%200%200%201-.599.919c-.28.28-.546.453-.92.598c-.28.11-.704.24-1.485.276c-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5%202.5%200%200%201-.92-.598a2.5%202.5%200%200%201-.6-.92c-.109-.281-.24-.705-.275-1.485c-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486c.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24%201.485-.276c.738-.034%201.024-.044%202.515-.045zm4.988%201.328a.96.96%200%201%200%200%201.92a.96.96%200%200%200%200-1.92m-4.27%201.122a4.109%204.109%200%201%200%200%208.217a4.109%204.109%200%200%200%200-8.217m0%201.441a2.667%202.667%200%201%201%200%205.334a2.667%202.667%200%200%201%200-5.334%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   /* https://developers.line.biz/en/docs/line-login/using-line-url-scheme */
   &[href^="https://line.me/R/"],
   &[href^="https://liff.line.me/"],
@@ -336,12 +357,14 @@ th {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M8%200c4.411%200%208%202.912%208%206.492c0%201.433-.555%202.723-1.715%203.994c-1.678%201.932-5.431%204.285-6.285%204.645c-.83.35-.734-.197-.696-.413l.003-.018l.114-.685c.027-.204.055-.521-.026-.723c-.09-.223-.444-.339-.704-.395C2.846%2012.39%200%209.701%200%206.492C0%202.912%203.59%200%208%200M5.022%207.686H3.497V4.918a.156.156%200%200%200-.155-.156H2.78a.156.156%200%200%200-.156.156v3.486c0%20.041.017.08.044.107v.001l.002.002l.002.002a.15.15%200%200%200%20.108.043h2.242c.086%200%20.155-.07.155-.156v-.56a.156.156%200%200%200-.155-.157m.791-2.924a.156.156%200%200%200-.156.156v3.486c0%20.086.07.155.156.155h.562c.086%200%20.155-.07.155-.155V4.918a.156.156%200%200%200-.155-.156zm3.863%200a.156.156%200%200%200-.156.156v2.07L7.923%204.832l-.013-.015v-.001l-.01-.01l-.003-.003l-.011-.009h-.001L7.88%204.79l-.003-.002l-.005-.003l-.008-.005h-.002l-.003-.002l-.01-.004l-.004-.002l-.01-.003h-.002l-.003-.001l-.009-.002h-.006l-.003-.001h-.004l-.002-.001h-.574a.156.156%200%200%200-.156.155v3.486c0%20.086.07.155.156.155h.56c.087%200%20.157-.07.157-.155v-2.07l1.6%202.16a.2.2%200%200%200%20.039.038l.001.001l.01.006l.004.002l.008.004l.007.003l.005.002l.01.003h.003a.2.2%200%200%200%20.04.006h.56c.087%200%20.157-.07.157-.155V4.918a.156.156%200%200%200-.156-.156zm3.815.717v-.56a.156.156%200%200%200-.155-.157h-2.242a.16.16%200%200%200-.108.044h-.001l-.001.002l-.002.003a.16.16%200%200%200-.044.107v3.486c0%20.041.017.08.044.107l.002.003l.002.002a.16.16%200%200%200%20.108.043h2.242c.086%200%20.155-.07.155-.156v-.56a.156.156%200%200%200-.155-.157H11.81v-.589h1.525c.086%200%20.155-.07.155-.156v-.56a.156.156%200%200%200-.155-.157H11.81v-.589h1.525c.086%200%20.155-.07.155-.156Z%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://linkedin.com/"],
   &[href^="https://www.linkedin.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M0%201.146C0%20.513.526%200%201.175%200h13.65C15.474%200%2016%20.513%2016%201.146v13.708c0%20.633-.526%201.146-1.175%201.146H1.175C.526%2016%200%2015.487%200%2014.854zm4.943%2012.248V6.169H2.542v7.225zm-1.2-8.212c.837%200%201.358-.554%201.358-1.248c-.015-.709-.52-1.248-1.342-1.248S2.4%203.226%202.4%203.934c0%20.694.521%201.248%201.327%201.248zm4.908%208.212V9.359c0-.216.016-.432.08-.586c.173-.431.568-.878%201.232-.878c.869%200%201.216.662%201.216%201.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252c-1.274%200-1.845.7-2.165%201.193v.025h-.016l.016-.025V6.169h-2.4c.03.678%200%207.225%200%207.225z%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://live.xbox.com/"],
   &[href^="https://www.xbox.com/"],
   &[href^="https://xbox.com/"] {
@@ -349,9 +372,11 @@ th {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M7.202%2015.967a8%208%200%200%201-3.552-1.26c-.898-.585-1.101-.826-1.101-1.306c0-.965%201.062-2.656%202.879-4.583C6.459%207.723%207.897%206.44%208.052%206.475c.302.068%202.718%202.423%203.622%203.531c1.43%201.753%202.088%203.189%201.754%203.829c-.254.486-1.83%201.437-2.987%201.802c-.954.301-2.207.429-3.239.33m-5.866-3.57C.589%2011.253.212%2010.127.03%208.497c-.06-.539-.038-.846.137-1.95c.218-1.377%201.002-2.97%201.945-3.95c.401-.417.437-.427.926-.263c.595.2%201.23.638%202.213%201.528l.574.519l-.313.385C4.056%206.553%202.52%209.086%201.94%2010.653c-.315.852-.442%201.707-.306%202.063c.091.24.007.15-.3-.319Zm13.101.195c.074-.36-.019-1.02-.238-1.687c-.473-1.443-2.055-4.128-3.508-5.953l-.457-.575l.494-.454c.646-.593%201.095-.948%201.58-1.25c.381-.237.927-.448%201.161-.448c.145%200%20.654.528%201.065%201.104a8.4%208.4%200%200%201%201.343%203.102c.153.728.166%202.286.024%203.012a9.5%209.5%200%200%201-.6%201.893c-.179.393-.624%201.156-.82%201.404c-.1.128-.1.127-.043-.148ZM7.335%201.952c-.67-.34-1.704-.705-2.276-.803a4%204%200%200%200-.759-.043c-.471.024-.45%200%20.306-.358A7.8%207.8%200%200%201%206.47.128c.8-.169%202.306-.17%203.094-.005c.85.18%201.853.552%202.418.9l.168.103l-.385-.02c-.766-.038-1.88.27-3.078.853c-.361.176-.676.316-.699.312a12%2012%200%200%201-.654-.319Z%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://music.apple.com/"]::before {
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%20d%3D%22m10.995%200l.573.001q.241%200%20.483.007c.35.01.705.03%201.051.093c.352.063.68.166.999.329a3.36%203.36%200%200%201%201.47%201.468c.162.32.265.648.328%201c.063.347.084.7.093%201.051q.007.241.007.483l.001.573v5.99l-.001.573q0%20.241-.008.483c-.01.35-.03.704-.092%201.05a3.5%203.5%200%200%201-.33%201a3.36%203.36%200%200%201-1.468%201.468a3.5%203.5%200%200%201-1%20.33a7%207%200%200%201-1.05.092q-.241.007-.483.008l-.573.001h-5.99l-.573-.001q-.241%200-.483-.008a7%207%200%200%201-1.052-.092a3.6%203.6%200%200%201-.998-.33a3.36%203.36%200%200%201-1.47-1.468a3.6%203.6%200%200%201-.328-1a7%207%200%200%201-.093-1.05Q.002%2011.81%200%2011.568V5.005l.001-.573q0-.241.007-.483c.01-.35.03-.704.093-1.05a3.6%203.6%200%200%201%20.329-1A3.36%203.36%200%200%201%201.9.431A3.5%203.5%200%200%201%202.896.1A7%207%200%200%201%203.95.008Q4.19.002%204.432%200h.573zm-.107%202.518l-4.756.959H6.13a.66.66%200%200%200-.296.133a.5.5%200%200%200-.16.31c-.004.027-.01.08-.01.16v5.952c0%20.14-.012.275-.106.39c-.095.115-.21.15-.347.177l-.31.063c-.393.08-.65.133-.881.223a1.4%201.4%200%200%200-.519.333a1.25%201.25%200%200%200-.332.995c.031.297.166.582.395.792c.156.142.35.25.578.296c.236.047.49.031.858-.043c.196-.04.38-.102.555-.205a1.4%201.4%200%200%200%20.438-.405a1.5%201.5%200%200%200%20.233-.55c.042-.202.052-.386.052-.588V6.347c0-.276.08-.35.302-.404c.024-.005%203.954-.797%204.138-.833c.257-.049.378.025.378.294v3.524c0%20.14-.001.28-.096.396c-.094.115-.211.15-.348.178l-.31.062c-.393.08-.649.133-.88.223a1.4%201.4%200%200%200-.52.334a1.26%201.26%200%200%200-.34.994c.03.297.174.582.404.792a1.2%201.2%200%200%200%20.577.294c.237.048.49.03.858-.044c.197-.04.381-.098.556-.202a1.4%201.4%200%200%200%20.438-.405q.173-.252.233-.549a2.7%202.7%200%200%200%20.044-.589V2.865c0-.273-.143-.443-.4-.42c-.04.003-.383.064-.424.073%22%2F%3E%3C%2Fsvg%3E");
   }
+
   &[href^="https://my.playstation.com/"],
   &[href^="https://playstation.com/"],
   &[href^="https://www.playstation.com/"] {
@@ -359,66 +384,78 @@ th {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M15.858%2011.451c-.313.395-1.079.676-1.079.676l-5.696%202.046v-1.509l4.192-1.493c.476-.17.549-.412.162-.538c-.386-.127-1.085-.09-1.56.08l-2.794.984v-1.566l.161-.054s.807-.286%201.942-.412c1.135-.125%202.525.017%203.616.43c1.23.39%201.368.962%201.056%201.356M9.625%208.883v-3.86c0-.453-.083-.87-.508-.988c-.326-.105-.528.198-.528.65v9.664l-2.606-.827V2c1.108.206%202.722.692%203.59.985c2.207.757%202.955%201.7%202.955%203.825c0%202.071-1.278%202.856-2.903%202.072Zm-8.424%203.625C-.061%2012.15-.271%2011.41.304%2010.984c.532-.394%201.436-.69%201.436-.69l3.737-1.33v1.515l-2.69.963c-.474.17-.547.411-.161.538c.386.126%201.085.09%201.56-.08l1.29-.469v1.356l-.257.043a8.45%208.45%200%200%201-4.018-.323Z%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://open.spotify.com/"],
   &[href^="https://spotify.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M8%200a8%208%200%201%200%200%2016A8%208%200%200%200%208%200m3.669%2011.538a.5.5%200%200%201-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499%200%200%201-.222-.973c3.048-.696%205.662-.397%207.77.892a.5.5%200%200%201%20.166.686m.979-2.178a.624.624%200%200%201-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625%200%200%201-.362-1.194c2.905-.881%206.517-.454%208.986%201.063a.624.624%200%200%201%20.206.858m.084-2.268C10.154%205.56%205.9%205.419%203.438%206.166a.748.748%200%201%201-.434-1.432c2.825-.857%207.523-.692%2010.492%201.07a.747.747%200%201%201-.764%201.288%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://play.google.com/store/"]::before {
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M14.222%209.374c1.037-.61%201.037-2.137%200-2.748L11.528%205.04L8.32%208l3.207%202.96zm-3.595%202.116L7.583%208.68L1.03%2014.73c.201%201.029%201.36%201.61%202.303%201.055zM1%2013.396V2.603L6.846%208zM1.03%201.27l6.553%206.05l3.044-2.81L3.333.215C2.39-.341%201.231.24%201.03%201.27%22%2F%3E%3C%2Fsvg%3E");
   }
+
   &[href^="https://reddit.com/"],
   &[href^="https://www.reddit.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20fill%3D%22currentColor%22%3E%3Cpath%20d%3D%22M6.167%208a.83.83%200%200%200-.83.83c0%20.459.372.84.83.831a.831.831%200%200%200%200-1.661m1.843%203.647c.315%200%201.403-.038%201.976-.611a.23.23%200%200%200%200-.306a.213.213%200%200%200-.306%200c-.353.363-1.126.487-1.67.487c-.545%200-1.308-.124-1.671-.487a.213.213%200%200%200-.306%200a.213.213%200%200%200%200%20.306c.564.563%201.652.61%201.977.61zm.992-2.807c0%20.458.373.83.831.83s.83-.381.83-.83a.831.831%200%200%200-1.66%200z%22%2F%3E%3Cpath%20d%3D%22M16%208A8%208%200%201%201%200%208a8%208%200%200%201%2016%200m-3.828-1.165c-.315%200-.602.124-.812.325c-.801-.573-1.9-.945-3.121-.993l.534-2.501l1.738.372a.83.83%200%201%200%20.83-.869a.83.83%200%200%200-.744.468l-1.938-.41a.2.2%200%200%200-.153.028a.2.2%200%200%200-.086.134l-.592%202.788c-1.24.038-2.358.41-3.17.992c-.21-.2-.496-.324-.81-.324a1.163%201.163%200%200%200-.478%202.224q-.03.17-.029.353c0%201.795%202.091%203.256%204.669%203.256s4.668-1.451%204.668-3.256c0-.114-.01-.238-.029-.353c.401-.181.688-.592.688-1.069c0-.65-.525-1.165-1.165-1.165%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://stackoverflow.com/"],
   &[href^="https://www.stackoverflow.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20fill%3D%22currentColor%22%3E%3Cpath%20d%3D%22M12.412%2014.572V10.29h1.428V16H1v-5.71h1.428v4.282z%22%2F%3E%3Cpath%20d%3D%22M3.857%2013.145h7.137v-1.428H3.857zM10.254%200L9.108.852l4.26%205.727l1.146-.852zm-3.54%203.377l5.484%204.567l.913-1.097L7.627%202.28l-.914%201.097zM4.922%206.55l6.47%203.013l.603-1.294l-6.47-3.013zm-.925%203.344l6.985%201.469l.294-1.398l-6.985-1.468z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://steamcommunity.com/id/"],
   &[href^="https://www.steamcommunity.com/id/"] {
     &::before {
       mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PGcgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNLjMyOSAxMC4zMzNBOC4wMSA4LjAxIDAgMCAwIDcuOTkgMTZDMTIuNDE0IDE2IDE2IDEyLjQxOCAxNiA4cy0zLjU4Ni04LTguMDA5LThBOC4wMDYgOC4wMDYgMCAwIDAgMCA3LjQ2OGwuMDAzLjAwNmw0LjMwNCAxLjc2OUEyLjIgMi4yIDAgMCAxIDUuNjIgOC44OGwxLjk2LTIuODQ0bC0uMDAxLS4wNGEzLjA0NiAzLjA0NiAwIDAgMSAzLjA0Mi0zLjA0M2EzLjA0NiAzLjA0NiAwIDAgMSAzLjA0MiAzLjA0M2EzLjA0NyAzLjA0NyAwIDAgMS0zLjExMSAzLjA0NGwtMi44MDQgMmEyLjIyMyAyLjIyMyAwIDAgMS0zLjA3NSAyLjExYTIuMjIgMi4yMiAwIDAgMS0xLjMxMi0xLjU2OEwuMzMgMTAuMzMzWiIvPjxwYXRoIGQ9Ik00Ljg2OCAxMi42ODNhMS43MTUgMS43MTUgMCAwIDAgMS4zMTgtMy4xNjVhMS43IDEuNyAwIDAgMC0xLjI2My0uMDJsMS4wMjMuNDI0YTEuMjYxIDEuMjYxIDAgMSAxLS45NyAyLjMzbC0uOTktLjQxYTEuNyAxLjcgMCAwIDAgLjg4Mi44NFptMy43MjYtNi42ODdhMi4wMyAyLjAzIDAgMCAwIDIuMDI3IDIuMDI5YTIuMDMgMi4wMyAwIDAgMCAyLjAyNy0yLjAyOWEyLjAzIDIuMDMgMCAwIDAtMi4wMjctMi4wMjdhMi4wMyAyLjAzIDAgMCAwLTIuMDI3IDIuMDI3bTIuMDMtMS41MjdhMS41MjQgMS41MjQgMCAxIDEtLjAwMiAzLjA0OGExLjUyNCAxLjUyNCAwIDAgMSAuMDAyLTMuMDQ4Ii8+PC9nPjwvc3ZnPg==");
     }
   }
+
   &[href^="https://t.me/"],
   &[href^="https://www.t.me/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M16%208A8%208%200%201%201%200%208a8%208%200%200%201%2016%200M8.287%205.906q-1.168.486-4.666%202.01q-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288%201.243.294q.39.01.868-.32q3.269-2.206%203.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227%201.241-1.846%201.817c-.193.18-.33.307-.358.336a8%208%200%200%201-.188.186c-.38.366-.664.64.015%201.088c.327.216.589.393.85.571c.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414c.214-.02.435-.22.547-.82c.265-1.417.786-4.486.906-5.751a1.4%201.4%200%200%200-.013-.315a.34.34%200%200%200-.114-.217a.53.53%200%200%200-.31-.093c-.3.005-.763.166-2.984%201.09%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://threads.com/"],
   &[href^="https://www.threads.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentcolor%22%20d%3D%22M6.321%206.016c-.27-.18-1.166-.802-1.166-.802c.756-1.081%201.753-1.502%203.132-1.502c.975%200%201.803.327%202.394.948s.928%201.509%201.005%202.644q.492.207.905.484c1.109.745%201.719%201.86%201.719%203.137c0%202.716-2.226%205.075-6.256%205.075C4.594%2016%201%2013.987%201%207.994C1%202.034%204.482%200%208.044%200C9.69%200%2013.55.243%2015%205.036l-1.36.353C12.516%201.974%2010.163%201.43%208.006%201.43c-3.565%200-5.582%202.171-5.582%206.79c0%204.143%202.254%206.343%205.63%206.343c2.777%200%204.847-1.443%204.847-3.556c0-1.438-1.208-2.127-1.27-2.127c-.236%201.234-.868%203.31-3.644%203.31c-1.618%200-3.013-1.118-3.013-2.582c0-2.09%201.984-2.847%203.55-2.847c.586%200%201.294.04%201.663.114c0-.637-.54-1.728-1.9-1.728c-1.25%200-1.566.405-1.967.868ZM8.716%208.19c-2.04%200-2.304.87-2.304%201.416c0%20.878%201.043%201.168%201.6%201.168c1.02%200%202.067-.282%202.232-2.423a6.2%206.2%200%200%200-1.528-.161%22%2F%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://tiktok.com/"],
   &[href^="https://www.tiktok.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNOSAwaDEuOThjLjE0NC43MTUuNTQgMS42MTcgMS4yMzUgMi41MTJDMTIuODk1IDMuMzg5IDEzLjc5NyA0IDE1IDR2MmMtMS43NTMgMC0zLjA3LS44MTQtNC0xLjgyOVYxMWE1IDUgMCAxIDEtNS01djJhMyAzIDAgMSAwIDMgM3oiLz48L3N2Zz4=");
     }
   }
+
   &[href^="https://twitch.tv/"],
   &[href^="https://www.twitch.tv/"] {
     &::before {
       mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20fill%3D%22currentcolor%22%3E%3Cpath%20d%3D%22M3.857%200L1%202.857v10.286h3.429V16l2.857-2.857H9.57L14.714%208V0zm9.714%207.429l-2.285%202.285H9l-2%202v-2H4.429V1.143h9.142z%22%2F%3E%3Cpath%20d%3D%22M11.857%203.143h-1.143V6.57h1.143zm-3.143%200H7.571V6.57h1.143z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
     }
   }
+
   &[href^="https://twitter.com/"],
   &[href^="https://www.twitter.com/"] {
     &::before {
       mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNS4wMjYgMTVjNi4wMzggMCA5LjM0MS01LjAwMyA5LjM0MS05LjMzNHEuMDAyLS4yMTEtLjAwNi0uNDIyQTYuNyA2LjcgMCAwIDAgMTYgMy41NDJhNi43IDYuNyAwIDAgMS0xLjg4OS41MThhMy4zIDMuMyAwIDAgMCAxLjQ0Ny0xLjgxN2E2LjUgNi41IDAgMCAxLTIuMDg3Ljc5M0EzLjI4NiAzLjI4NiAwIDAgMCA3Ljg3NSA2LjAzYTkuMzIgOS4zMiAwIDAgMS02Ljc2Ny0zLjQyOWEzLjI5IDMuMjkgMCAwIDAgMS4wMTggNC4zODJBMy4zIDMuMyAwIDAgMSAuNjQgNi41NzV2LjA0NWEzLjI5IDMuMjkgMCAwIDAgMi42MzIgMy4yMThhMy4yIDMuMiAwIDAgMS0uODY1LjExNWEzIDMgMCAwIDEtLjYxNC0uMDU3YTMuMjggMy4yOCAwIDAgMCAzLjA2NyAyLjI3N0E2LjYgNi42IDAgMCAxIC43OCAxMy41OGE2IDYgMCAwIDEtLjc4LS4wNDVBOS4zNCA5LjM0IDAgMCAwIDUuMDI2IDE1Ii8+PC9zdmc+");
     }
   }
+
   &[href^="https://wa.me/"]::before {
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M13.601%202.326A7.85%207.85%200%200%200%207.994%200C3.627%200%20.068%203.558.064%207.926c0%201.399.366%202.76%201.057%203.965L0%2016l4.204-1.102a7.9%207.9%200%200%200%203.79.965h.004c4.368%200%207.926-3.558%207.93-7.93A7.9%207.9%200%200%200%2013.6%202.326zM7.994%2014.521a6.6%206.6%200%200%201-3.356-.92l-.24-.144l-2.494.654l.666-2.433l-.156-.251a6.56%206.56%200%200%201-1.007-3.505c0-3.626%202.957-6.584%206.591-6.584a6.56%206.56%200%200%201%204.66%201.931a6.56%206.56%200%200%201%201.928%204.66c-.004%203.639-2.961%206.592-6.592%206.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646c-.182-.065-.315-.099-.445.099c-.133.197-.513.646-.627.775c-.114.133-.232.148-.43.05c-.197-.1-.836-.308-1.592-.985c-.59-.525-.985-1.175-1.103-1.372c-.114-.198-.011-.304.088-.403c.087-.088.197-.232.296-.346c.1-.114.133-.198.198-.33c.065-.134.034-.248-.015-.347c-.05-.099-.445-1.076-.612-1.47c-.16-.389-.323-.335-.445-.34c-.114-.007-.247-.007-.38-.007a.73.73%200%200%200-.529.247c-.182.198-.691.677-.691%201.654s.71%201.916.81%202.049c.098.133%201.394%202.132%203.383%202.992c.47.205.84.326%201.129.418c.475.152.904.129%201.246.08c.38-.058%201.171-.48%201.338-.943c.164-.464.164-.86.114-.943c-.049-.084-.182-.133-.38-.232%22%2F%3E%3C%2Fsvg%3E");
   }
+
   &[href^="https://x.com/"],
   &[href^="https://www.x.com/"] {
     &::before {
@@ -442,9 +479,11 @@ th {
   padding: 0;
   color: var(--color-a);
   font: inherit;
+
   &:hover {
     color: var(--color-a-hover);
   }
+
   &:is(:active, :focus-visible) {
     color: var(--color-a-active);
   }
@@ -458,9 +497,11 @@ th {
   padding: 0.5em;
   color: var(--color-4);
   font: inherit;
+
   &:hover {
     color: var(--color-2);
   }
+
   &:is(:active, :focus-visible) {
     color: var(--color-a-active);
   }
@@ -472,6 +513,7 @@ th {
   background: transparent !important;
   max-width: 100%;
   color-scheme: auto !important;
+
   &.youtube {
     aspect-ratio: 16 / 9;
     width: 100%;
@@ -488,25 +530,26 @@ th {
 }
 
 /*!
-  Theme: StackOverflow Dark
-  Description: Dark theme as used on stackoverflow.com
+  Theme: StackOverflow Light
+  Description: Light theme as used on stackoverflow.com
   Author: stackoverflow.com
   Maintainer: @Hirse
   Website: https://github.com/StackExchange/Stacks
   License: MIT
   Updated: 2021-05-15
-
-  Updated for @stackoverflow/stacks v0.64.0
-  Code Blocks: /blob/v0.64.0/lib/css/components/_stacks-code-blocks.less
-  Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
 */
 
+.hljs {
+  background: #f6f6f6;
+  color: #2f3337;
+}
+
 .hljs-subst {
-  color: #fff;
+  color: #2f3337;
 }
 
 .hljs-comment {
-  color: #999;
+  color: #656e77;
 }
 
 .hljs-keyword,
@@ -514,15 +557,15 @@ th {
 .hljs-meta .hljs-keyword,
 .hljs-doctag,
 .hljs-section {
-  color: #88aece;
+  color: #015692;
 }
 
 .hljs-attr {
-  color: #88aece;
+  color: #015692;
 }
 
 .hljs-attribute {
-  color: #c59bc1;
+  color: #803378;
 }
 
 .hljs-name,
@@ -531,11 +574,11 @@ th {
 .hljs-selector-id,
 .hljs-quote,
 .hljs-template-tag {
-  color: #f08d49;
+  color: #b75501;
 }
 
 .hljs-selector-class {
-  color: #88aece;
+  color: #015692;
 }
 
 .hljs-string,
@@ -545,35 +588,35 @@ th {
 .hljs-template-variable,
 .hljs-link,
 .hljs-selector-attr {
-  color: #b5bd68;
+  color: #54790d;
 }
 
 .hljs-meta,
 .hljs-selector-pseudo {
-  color: #88aece;
+  color: #015692;
 }
 
 .hljs-built_in,
 .hljs-title,
 .hljs-literal {
-  color: #f08d49;
+  color: #b75501;
 }
 
 .hljs-bullet,
 .hljs-code {
-  color: #ccc;
+  color: #535a60;
 }
 
 .hljs-meta .hljs-string {
-  color: #b5bd68;
+  color: #54790d;
 }
 
 .hljs-deletion {
-  color: #de7176;
+  color: #c02d2e;
 }
 
 .hljs-addition {
-  color: #76c490;
+  color: #2f6f44;
 }
 
 .hljs-emphasis {
@@ -608,6 +651,7 @@ th {
   padding: 0;
   font-size: 0.9375em;
   list-style: none;
+
   a {
     display: inline-block;
     padding: 0.5em;
@@ -636,8 +680,8 @@ th {
 
 .page-header-img {
   border-radius: 50%;
-  width: 16em;
-  height: 16em;
+  width: 60%;
+  max-width: 16em;
   user-select: none;
 }
 
@@ -714,26 +758,46 @@ th {
   margin-block: 1.5em 0;
   padding: 0;
   list-style: none;
-  > li {
+
+  >li {
     display: flex;
     align-items: center;
     border-block-start: thin solid var(--color-border);
     padding-inline-end: 1em;
     user-select: none;
-    > label {
+
+    &:has(input:is(:hover)) {
+
+      &,
+      +li {
+        border-block-start-color: var(--color-4);
+      }
+    }
+
+    &:has(input:is(:active, :focus-visible)) {
+
+      &,
+      +li {
+        border-block-start-color: var(--color-3) !important;
+      }
+    }
+
+    >label {
       flex: 1;
-      transition: color 0.15s;
       cursor: pointer;
       padding-inline: 1em 1.75em;
       padding-block: 0.75em;
       color: var(--color-3);
       user-select: none;
-      &:hover {
+
+      &:has(~ input:hover) {
         color: var(--color-2);
       }
-      &:is(:active, :focus-visible, :has(~ input:focus)) {
+
+      &:is(:has(~ input:active), :has(~ input:focus-visible)) {
         color: var(--color) !important;
       }
+
       &:has(~ input:checked) {
         --color-3: var(--color-a);
         --color-2: var(--color-a-hover);
@@ -767,20 +831,25 @@ th {
   font-weight: 500;
   user-select: none;
   text-decoration: none;
+
   &:hover {
     background: var(--color-input-hover);
     color: var(--color-2);
   }
+
   &:is(:active, :focus-visible) {
     background: var(--color-input-active);
     color: var(--color);
   }
+
   &:focus-visible {
     outline-color: var(--color-input-outline);
   }
+
   &:disabled {
     cursor: not-allowed;
   }
+
   &::before {
     mask-size: contain;
     mask-repeat: no-repeat;
